@@ -1,29 +1,24 @@
-import numpy
+def calculate(x, y, op):
+    operations = {
+        '+': lambda a, b: a + b,
+        '-': lambda a, b: a - b,
+        '*': lambda a, b: a * b,
+        '/': lambda a, b: a / b,
+    }
 
+    if op not in operations:
+        raise ValueError('Invalid operator')
+    if op == '/' and y == 0:
+        raise ZeroDivisionError('Cannot divide by zero')
 
-def plus(x,y):
-    return x + y
+    return operations[op](x, y)
 
-def minus(x,y):
-    return x - y
-
-def multiply(x,y):
-    return x * y
-
-def divide(x,y):
-    return x / y
-
-x = int(input("Whats your first number: " ))
-y = int(input("Whats your second number: "))
-z = input("Whats your operand: ")
-if z == "+":
-    print(plus(x,y))
-
-elif z == "-":
-     print(minus(x,y))
-
-elif z == "*":
-     print(multiply(x,y))
-
-elif z == "/":
-     print(divide(x,y))
+try:
+    x = float(input('Whats your first number: '))
+    y = float(input('Whats your second number: '))
+    op = input('Whats your operand: ').strip()
+    print(calculate(x, y, op))
+except ValueError as exc:
+    print('Error:', exc)
+except ZeroDivisionError as exc:
+    print('Error:', exc)
