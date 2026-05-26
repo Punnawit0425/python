@@ -27,7 +27,7 @@ while(running):
     y = 600 // 2 + int(math.sin(angle) * radius)
 
     screen.fill((30,30,30))
-    pygame.draw.circle(screen, (0, 150, 255), (x,y), 20)
+    pygame.draw.circle(screen, (0,255,255),(x,y),20)
     angle += speed
 
     pygame.display.flip()
